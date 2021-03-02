@@ -1,8 +1,14 @@
-const express = require("express")
-const bodyParser = require("body-parser")
+import express from "express"
+import cors from "cors"
+import bodyParser from "body-parser"
 
-const app = express()
+import postRoutes from "./routes/post-routes.js"
 
-app.use(bodyParser.json())
+const server = express()
 
-app.listen(5000)
+// server.use(cors())
+server.use(bodyParser.json())
+
+server.use("/", postRoutes)
+
+server.listen(3001, console.log("Sever has started"))
