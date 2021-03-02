@@ -1,9 +1,18 @@
 import { Router } from "express"
+import { validate } from "./utils.js"
 
-import { getPosts } from "../controllers/posts-controller.js"
+import {
+  getPosts,
+  getPostById,
+  createPost,
+} from "../controllers/posts-controller.js"
 
 const router = Router()
 
-router.get("/api/posts", getPosts)
+router.get("/", getPosts)
+
+router.get("/:pid", getPostById)
+
+router.post("/", validate(), createPost)
 
 export default router
